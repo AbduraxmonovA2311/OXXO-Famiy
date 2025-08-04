@@ -1,0 +1,325 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OXXO Family – Fikr qoldiring</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", sans-serif;
+            background: url("{% static 'images/photo_2023-10-26_16-20-58.jpg' %}") no-repeat center center fixed;
+            background-size: cover;
+            background-color: burlywood;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 10px;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px 25px;
+            border-radius: 18px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+            max-width: 460px;
+            width: 100%;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .logo {
+            width: 100px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #6c4725;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            text-align: left;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            font-size: 15px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #ff914d;
+            outline: none;
+            box-shadow: 0 0 4px rgba(255, 145, 77, 0.3);
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .radio-option:hover {
+            background-color: #ffe5d0;
+            border-color: #ff914d;
+        }
+
+        input[type="radio"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #ff914d;
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+        }
+
+        input[type="radio"]:checked::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            background-color: #ff914d;
+            border-radius: 50%;
+            position: absolute;
+            top: 3px;
+            left: 3px;
+        }
+
+        button {
+            background-color: #ff914d;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e67e22;
+        }
+
+        .success {
+            color: green;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .instagram-link {
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .instagram-link a {
+            display: inline-block;
+            background-color: #e1306c;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .instagram-link a:hover {
+            background-color: #c72e5e;
+        }
+
+        .menu-container {
+            margin: 60px auto;
+            max-width: 900px;
+            padding: 20px;
+            background-color: rgba(255,255,255,0.95);
+            border-radius: 18px;
+            text-align: center;
+        }
+
+        .menu-container h2 {
+            margin-bottom: 30px;
+            color: #6c4725;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .menu-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .menu-item h3 {
+            margin-top: 0;
+            color: #ff914d;
+        }
+
+        .menu-item span {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #111;
+        }
+
+        /* ✅ RESPONSIVE QISM */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+                margin-top: 25px;
+            }
+
+            h1 {
+                font-size: 20px;
+                text-align: center;
+            }
+
+            input[type="text"],
+            textarea {
+                font-size: 14px;
+            }
+
+            .radio-option {
+                font-size: 14px;
+                padding: 6px 10px;
+            }
+
+            button {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .instagram-link a {
+                font-size: 14px;
+                padding: 10px 20px;
+                display: block;
+                width: 100%;
+            }
+
+            .menu-container {
+                margin: 30px auto;
+                padding: 15px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-item {
+                padding: 15px;
+            }
+
+            .menu-item h3 {
+                font-size: 18px;
+            }
+
+            .menu-item span {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 18px;
+            }
+
+            .container {
+                padding: 15px 10px;
+            }
+
+            .radio-option {
+                font-size: 13px;
+            }
+
+            button {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🍽️ OXXO Family restorani haqida fikringiz</h1>
+
+        {% if submitted %}
+            <p class="success">Fikringiz uchun tashakkur! 😊</p>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+
+            <input type="text" name="name" placeholder="Ismingizni kiriting" required>
+
+            <p>Restoran xizmatini qanday baholaysiz?</p>
+            <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" name="rating" value="5" required>
+                    A'lo
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="rating" value="4">
+                    Yaxshi
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="rating" value="3">
+                    O‘rtacha
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="rating" value="2">
+                    Yomon
+                </label>
+            </div>
+
+            <textarea name="message" placeholder="Xabaringizni shu yerga yozing" rows="5" required></textarea>
+
+            <button type="submit">✉️ Yuborish</button>
+        </form>
+
+        <!-- Instagram tugmasi -->
+        <div class="instagram-link">
+            <a href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDA5NDU2NDg4MDAwNTIz?story_media_id=3635884374764100338&igsh=MWdzaGdoMGVkanVteg==" target="_blank">
+                📷 Instagram Menyuni Ko‘rish
+            </a>
+        </div>
+    </div>
+</body>
+</html>
